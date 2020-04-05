@@ -63,7 +63,19 @@ function getName() {
     } else {
         name.textContent = localStorage.getItem('name');
     }
-    localStorage.setItem(name, name)
+}
+
+// Set name
+function setName(e) {
+    if(e.type === 'keypress'){
+        // check that enter was trigger
+        if(e.which == 13 || e.keyCode == 13) {
+            localStorage.setItem('name', e.target.innerText)
+            name.blur();
+        }
+    } else {
+        localStorage.setItem('name', e.target.innerText)
+    }
 }
 
 // Get Focus
@@ -73,8 +85,28 @@ function getFocus() {
     } else {
         focus.textContent = localStorage.getItem('focus');
     }
-    localStorage.setItem(name, name)
 }
+
+// Set focus
+
+function setFocus(e) {
+    if(e.type === 'keypress') {
+        if (e.which == 13 || e.keyCode == 13) {
+            localStorage.setItem('focus', e.target.innerText)
+            focus.blur();
+        }
+    } else {
+        localStorage.setItem('focus', e.target.innerText)
+    }
+}
+
+
+// Event listeners to set name and focus
+name.addEventListener('keypress', setName);
+name.addEventListener('blur', setName);
+
+focus.addEventListener('keypress', setFocus);
+name.addEventListener('blur', setFocus)
 
 //Run
 showTime();
