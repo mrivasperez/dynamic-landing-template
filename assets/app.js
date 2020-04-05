@@ -58,9 +58,26 @@ function bcgGreet() {
 
 // Get Name
 function getName() {
-    
+    if(localStorage.getItem('name')=== null){
+        name.textContent = '[Type your name here.]'
+    } else {
+        name.textContent = localStorage.getItem('name');
+    }
+    localStorage.setItem(name, name)
+}
+
+// Get Focus
+function getFocus() {
+    if(localStorage.getItem('focus')=== null){
+        focus.textContent = '[Type something you want to focus on.]'
+    } else {
+        focus.textContent = localStorage.getItem('focus');
+    }
+    localStorage.setItem(name, name)
 }
 
 //Run
 showTime();
 bcgGreet();
+getName();
+getFocus();
